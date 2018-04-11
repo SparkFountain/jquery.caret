@@ -38,7 +38,7 @@
 
         pos = Math.floor(pos);
 
-        // Negative index counts backward from the end of the input/textarea's value
+        // Negative index counts backward from the end of the input/textarea/editable div's value
         if (pos < 0) {
             pos = len + pos;
         }
@@ -119,7 +119,7 @@
 
     /**
      * Gets the position of the caret in the given input.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @returns {Number}
      * @see http://stackoverflow.com/questions/263743/how-to-get-cursor-position-in-textarea/263796#263796
      */
@@ -152,7 +152,7 @@
 
     /**
      * Sets the position of the caret in the given input.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @param {Number} pos
      * @see http://parentnode.org/javascript/working-with-the-cursor-position/
      */
@@ -173,7 +173,7 @@
 
     /**
      * Inserts the specified text at the current caret position in the given input.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @param {String} text
      * @see http://parentnode.org/javascript/working-with-the-cursor-position/
      */
@@ -265,7 +265,7 @@
 
     /**
      * Gets the selected text range of the given input.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @returns {Range}
      * @see http://stackoverflow.com/a/263796/467582
      * @see http://stackoverflow.com/a/2966703/467582
@@ -301,7 +301,7 @@
 
     /**
      * Sets the selected text range of (i.e., highlights text in) the given input.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @param {Number} startPos Zero-based index
      * @param {Number} endPos Zero-based index
      * @see http://parentnode.org/javascript/working-with-the-cursor-position/
@@ -323,7 +323,7 @@
 
     /**
      * Replaces the currently selected text with the given string.
-     * @param {HTMLInputElement|HTMLTextAreaElement} input input or textarea element
+     * @param {HTMLInputElement|HTMLTextAreaElement|HTMLDivElement} input input, textarea or editable div element
      * @param {String} text New text that will replace the currently selected text.
      * @see http://parentnode.org/javascript/working-with-the-cursor-position/
      */
@@ -374,7 +374,7 @@
      */
     var _selectAll = function(elem) {
         var $elem = $(elem);
-        if ($elem.is('input, textarea') || elem.select) {
+        if ($elem.is('input, textarea, div[contenteditable="true"]') || elem.select) {
             $elem.select();
             return;
         }
@@ -401,7 +401,7 @@
     $.extend($.fn, {
 
         /**
-         * Gets or sets the position of the caret or inserts text at the current caret position in an input or textarea element.
+         * Gets or sets the position of the caret or inserts text at the current caret position in an input, textarea or editable div element.
          * @returns {Number|jQuery} The current caret position if invoked as a getter (with no arguments)
          * or this jQuery object if invoked as a setter or inserter.
          * @see http://web.archive.org/web/20080704185920/http://parentnode.org/javascript/working-with-the-cursor-position/
@@ -424,7 +424,7 @@
          * </pre>
          */
         caret: function() {
-            var $inputs = this.filter('input, textarea');
+            var $inputs = this.filter('input, textarea, div[contenteditable="true"]');
 
             // getCaret()
             if (arguments.length === 0) {
@@ -450,7 +450,7 @@
         },
 
         /**
-         * Gets or sets the selection range or replaces the currently selected text in an input or textarea element.
+         * Gets or sets the selection range or replaces the currently selected text in an input, textarea or editable div element.
          * @returns {Range|jQuery} The current selection range if invoked as a getter (with no arguments)
          * or this jQuery object if invoked as a setter or replacer.
          * @see http://stackoverflow.com/a/2966703/467582
@@ -475,7 +475,7 @@
          * </pre>
          */
         range: function() {
-            var $inputs = this.filter('input, textarea');
+            var $inputs = this.filter('input, textarea, div[contenteditable="true"]');
 
             // getRange() = { start: pos, end: pos }
             if (arguments.length === 0) {
