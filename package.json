@@ -1,6 +1,7 @@
 {
-  "name": "jquery-plugin",
-  "version": "0.0.0-ignored",
+  "name": "jquery-caret-plugin",
+  "version": "1.0.0",
+  "description": "Cross-browser jQuery plugin that allows you to manipulate the cursor position and selection range of <input> and <textarea> elements, as well as highlight text on the page.",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -15,5 +16,13 @@
     "grunt-contrib-watch": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt": "~0.4.1"
-  }
+  },
+  "main": "./dist/jquery.caret-1.5.2.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SparkFountain/jquery.caret.git"
+  },
+  "author": "Andrew C. Dvorak",
+  "license": "MIT",
+  "homepage": "https://github.com/SparkFountain/jquery.caret"
 }
