@@ -124,6 +124,8 @@
      * @see http://stackoverflow.com/questions/263743/how-to-get-cursor-position-in-textarea/263796#263796
      */
     var _getCaret = function(input) {
+        console.info('_getCaret input:', input);
+
         if (!input) {
             return undefined;
         }
